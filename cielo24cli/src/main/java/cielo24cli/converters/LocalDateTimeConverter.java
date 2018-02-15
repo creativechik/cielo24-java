@@ -1,8 +1,8 @@
 package cielo24cli.converters;
 
-import com.beust.jcommander.IStringConverter;
+import java.time.LocalDateTime;
 
-import javax.time.calendar.LocalDateTime;
+import com.beust.jcommander.IStringConverter;
 
 public class LocalDateTimeConverter implements IStringConverter<LocalDateTime> {
 	@Override

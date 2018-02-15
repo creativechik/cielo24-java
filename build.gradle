@@ -1,0 +1,37 @@
+allprojects {
+    ext {
+        gsonVersion = '2.3.1'
+        guavaVersion = '18.0'
+        jcommanderVersion = '1.47'
+        junitVersion = '4.12'
+    }
+
+    apply plugin: 'java'
+
+    group 'com.github.cielo24'
+
+    version '1.0.3'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile "com.google.code.gson:gson:$gsonVersion"
+        compile "com.google.guava:guava:$guavaVersion"
+        compile "com.beust:jcommander:$jcommanderVersion"
+        testCompile "junit:junit:$junitVersion"
+    }
+}
+
+project(':cielo24') {
+
+}
+
+project(':cielo24cli') {
+    dependencies {
+        compile project(':cielo24')
+    }
+}

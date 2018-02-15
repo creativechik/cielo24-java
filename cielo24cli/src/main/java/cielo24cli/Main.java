@@ -144,10 +144,9 @@ public class Main {
 		} else if(actionName.equals("list_elementlists")) {
 			System.out.println("Listing element lists...");
 			return Joiner.on("\n").join(actions.getListOfElementLists(options.apiToken, options.jobId));
-		} else{
-			options.PrintDefaultUsage();
-			return "";
 		}
+		options.PrintDefaultUsage();
+		return "";
 	}
 
 	private static boolean tryLogin() {
