@@ -1,8 +1,9 @@
 package cielo24.json;
 
+import com.google.gson.Gson;
+
 import cielo24.Utils;
 
-import com.google.gson.Gson;
 
 public abstract class JsonBase {
 

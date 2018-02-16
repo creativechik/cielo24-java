@@ -6,7 +6,7 @@ import static cielo24.Enums.*;
 
 import com.google.gson.annotations.SerializedName;
 
-import javax.time.calendar.LocalDateTime;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Hashtable;
 

@@ -1,0 +1,53 @@
+allprojects {
+    ext {
+        gsonVersion = '2.3.1'
+        guavaVersion = '18.0'
+        jcommanderVersion = '1.47'
+        junitVersion = '4.12'
+    }
+
+    apply plugin: 'java'
+
+    group 'com.github.cielo24'
+
+    version '1.0.3'
+
+    sourceCompatibility = 1.8
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        compile "com.google.code.gson:gson:$gsonVersion"
+        compile "com.google.guava:guava:$guavaVersion"
+        compile "com.beust:jcommander:$jcommanderVersion"
+        testCompile "junit:junit:$junitVersion"
+    }
+}
+
+project(':cielo24') {
+
+}
+
+project(':cielo24cli') {
+    dependencies {
+        compile project(':cielo24')
+    }
+
+    // Executable jar
+    jar {
+        manifest {
+            attributes 'Main-Class': 'cielo24cli.Main'
+        }
+
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+    }
+}
+
+// Build a single jar that contains both projects.
+def mainProjects = [':cielo24',':cielo24cli']
+task oneJar( type: Jar , dependsOn: mainProjects.collect{ it+":compileJava"}) {
+    baseName = 'cielo24-java'
+    from files(mainProjects.collect{ project(it).sourceSets.main.output })
+}

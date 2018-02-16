@@ -1,8 +1,9 @@
 package cielo24.json;
 
+import java.time.LocalDateTime;
+
 import com.google.gson.annotations.SerializedName;
 
-import javax.time.calendar.LocalDateTime;
 
 public class ElementListVersion extends JsonBase {
     
